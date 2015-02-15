@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="igo">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../IpadicAnalyzer/out/artifacts/igo_ipadic_analyzer/igo_ipadic_analyzer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../igo-0.4.2-src/igo-0.4.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="IgoPlugin:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/IgoPlugin_jar</output-path>
+    <root id="archive" name="IgoPlugin.jar">
+      <element id="module-output" name="IgoPlugin" />
+      <element id="extracted-dir" path="/opt/elasticsearch-0.15.2/lib/elasticsearch-0.15.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../igo-0.4.2-src/igo-0.4.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../igo-analyzer-0.0.1-src/igo-analyzer-0.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../IpadicAnalyzer/out/artifacts/igo_ipadic_analyzer/igo_ipadic_analyzer.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

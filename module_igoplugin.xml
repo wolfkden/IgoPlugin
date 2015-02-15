@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_igoplugin" default="compile.module.igoplugin">
+  <dirname property="module.igoplugin.basedir" file="${ant.file.module_igoplugin}"/>
+  
+  
+  <property name="compiler.args.igoplugin" value="${compiler.args}"/>
+  
+  <property name="igoplugin.output.dir" value="${module.igoplugin.basedir}/out/production/IgoPlugin"/>
+  <property name="igoplugin.testoutput.dir" value="${module.igoplugin.basedir}/out/test/IgoPlugin"/>
+  
+  <path id="igoplugin.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="igoplugin.module.production.classpath">
+    <path refid="library.elasticsearch.classpath"/>
+    <path refid="library.igo.classpath"/>
+    <path refid="library.lucene.classpath"/>
+  </path>
+  
+  <path id="igoplugin.runtime.production.module.classpath">
+    <pathelement location="${igoplugin.output.dir}"/>
+    <path refid="library.elasticsearch.classpath"/>
+    <path refid="library.igo.classpath"/>
+    <path refid="library.lucene.classpath"/>
+  </path>
+  
+  <path id="igoplugin.module.classpath">
+    <pathelement location="${igoplugin.output.dir}"/>
+    <path refid="library.elasticsearch.classpath"/>
+    <path refid="library.igo.classpath"/>
+    <path refid="library.lucene.classpath"/>
+  </path>
+  
+  <path id="igoplugin.runtime.module.classpath">
+    <pathelement location="${igoplugin.testoutput.dir}"/>
+    <pathelement location="${igoplugin.output.dir}"/>
+    <path refid="library.elasticsearch.classpath"/>
+    <path refid="library.igo.classpath"/>
+    <path refid="library.lucene.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.igoplugin">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.igoplugin">
+    <patternset refid="excluded.from.module.igoplugin"/>
+  </patternset>
+  
+  <path id="igoplugin.module.sourcepath">
+    <dirset dir="${module.igoplugin.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.igoplugin" depends="compile.module.igoplugin.production,compile.module.igoplugin.tests" description="Compile module IgoPlugin"/>
+  
+  <target name="compile.module.igoplugin.production" description="Compile module IgoPlugin; production classes">
+    <mkdir dir="${igoplugin.output.dir}"/>
+    <javac destdir="${igoplugin.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.igoplugin}"/>
+      <bootclasspath refid="igoplugin.module.bootclasspath"/>
+      <classpath refid="igoplugin.module.production.classpath"/>
+      <src refid="igoplugin.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.igoplugin"/>
+    </javac>
+    
+    <copy todir="${igoplugin.output.dir}">
+      <fileset dir="${module.igoplugin.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.igoplugin.tests" depends="compile.module.igoplugin.production" description="compile module IgoPlugin; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.igoplugin" description="cleanup module">
+    <delete dir="${igoplugin.output.dir}"/>
+    <delete dir="${igoplugin.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="elasticsearch">
+    <CLASSES>
+      <root url="jar:///opt/elasticsearch-0.15.2/lib/elasticsearch-0.15.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
